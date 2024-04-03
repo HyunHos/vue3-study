@@ -1,6 +1,6 @@
 <template>
   <div>
-<img alt="Vue logo" src="./assets/logo.png">
+<!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
@@ -9,26 +9,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active asd" aria-current="page" href="#" :class="nav_list[0].class">{{nav_list[0]}}</a>
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" :class="nav_list[0].class">{{nav_list[0].name}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
           <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li> -->
+
+          <!-- v-for -->
+          <li v-for="(menu,idx) in nav_list" :key="idx">
+            <!-- <a class="nav-link" href="#" @click="open_modal">{{menu.name + "-" + idx}}</a> -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">{{menu.name + "-" + idx}}</button>
           </li>
+
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -37,8 +33,28 @@
       </div>
     </div>
   </nav>
+  <button @click="increaes">클릭 수 {{count}}</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Woo-hoo, you're reading this text in a modal!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
   </div>
-  
+
+  </div>
 </template>
 
 <script>
@@ -47,9 +63,28 @@ export default {
   name: 'App',
   data(){
     return {
-      nav_list : [{name : "Hom", class:""}, "Link", "Dropdown", "Disabled"]
+      nav_list : [
+        {name : "Hom", class:"text-primary"},
+        {name : "Link", class:"text-primary"},
+        {name : "Dropdown", class:"text-primary"},
+        {name : "Disabled", class:"text-primary"}
+      ],
+      count : 0,
+
     }
   },
+
+  methods: {
+    increaes(){
+      this.count++
+    },
+    // 모달창 show/hide
+    open_modal(){
+
+    }
+  
+  },
+
   components: {
   }
 }
