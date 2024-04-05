@@ -24,7 +24,6 @@
             <!-- <a class="nav-link" href="#" @click="open_modal">{{menu.name + "-" + idx}}</a> -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">{{menu.name + "-" + idx}}</button>
           </li>
-
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -86,6 +85,10 @@ export default {
   },
 
   components: {
+  },
+
+  created : function(){
+    console.log("created!")
   }
 }
 </script>
